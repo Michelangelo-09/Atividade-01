@@ -1,12 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Primária</title>
+    <title>Bolão da Copa</title>
+    <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
-    <h1>Título bacana</h1>
-    <p>Frase motivacional daora</p>
+    <div class="container">
+        <h1>🏆 Sistema de Bolão da Copa</h1>
+        
+        <!-- Formulário para criar e editar palpites -->
+        <form id="form-palpite">
+            <input type="hidden" id="palpite-id">
+            
+            <div class="form-group">
+                <label for="jogo">Jogo:</label>
+                <input type="text" id="jogo" placeholder="Ex: Brasil 3 x 1 Alemanha" required>
+            </div>
+
+            <div class="form-group">
+                <label for="participante">Participante:</label>
+                <input type="text" id="participante" placeholder="Seu nome" required>
+            </div>
+
+            <div class="form-group">
+                <label for="palpite">Palpite:</label>
+                <input type="text" id="palpite" placeholder="Ex: Brasil vence" required>
+            </div>
+
+            <button type="submit" id="btn-salvar">Salvar Palpite</button>
+            <button type="button" id="btn-cancelar" style="display: none;">Cancelar</button>
+        </form>
+
+        <!-- Tabela para exibição do CRUD -->
+        <h2>📋 Palpites Cadastrados</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Jogo</th>
+                    <th>Participante</th>
+                    <th>Palpite</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-palpites">
+                <!-- Inserido dinamicamente via JS -->
+            </tbody>
+        </table>
+    </div>
+    <script src="JS/script.js"></script>
 </body>
 </html>
