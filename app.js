@@ -6,12 +6,17 @@ app.use(express.static('public'));
 
 // Simulação de banco de dados em memória
 let palpites = [];
-let idAtual = 1;
+let maxIdPalpite = 1;
 
 // 1. CREATE (Criar Palpite)
 app.post('/api/palpites', (req, res) => {
     const { jogo, participante, palpite } = req.body;
-    const novoPalpite = { id: idAtual++, jogo, participante, palpite };
+    for(i = 0; i < palpites.length; i++) {
+        if(palpites[i].id >= maxIdPalpite) {
+            maxIdPalpite = palpites[i].id + 1; 
+        }
+    }
+    const novoPalpite = { id: maxIdPalpite, jogo, participante, palpite };
     palpites.push(novoPalpite);
     res.status(201).json(novoPalpite);
 });
